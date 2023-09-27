@@ -1,6 +1,7 @@
 library(ggplot2)
 library(GGally)
 library(caret)
+library(MASS)
 
 wine = read.table(file = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data",  
                   sep = ",", head=F)
@@ -54,7 +55,14 @@ test_error_rate <- 1 - accuracy
 
 print(test_error_rate)
 
-
+## Question #7
+LDA.Wine <- lda(y ~ x1 + x2, data=train)
+ggplot(train, aes(x=x1, y=x2, color=y)) + 
+  geom_point() +
+  geom_abline(slope=LDA.Wine$scaling[2]/LDA.Wine$scaling[1], 
+              intercept=-LDA.Wine$means[1,] %*% LDA.Wine$scaling/LDA.Wine$scaling[1], 
+              color="black") +
+  labs(title="LDA Decision Boundary")
 
 
 
