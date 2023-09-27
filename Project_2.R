@@ -2,6 +2,7 @@ library(ggplot2)
 library(GGally)
 library(caret)
 library(MASS)
+library(e1071)
 
 wine = read.table(file = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data",  
                   sep = ",", head=F)
@@ -75,6 +76,16 @@ accuracy <- cm$overall["Accuracy"]
 test_error_rate <- 1 - accuracy
 print(test_error_rate)
 
+## Question #10
+NB.Wine <- naiveBayes(y ~ x1 + x2, data = train)
+print(NB.Wine)
+
+## Question #11
+predicted_classes <- predict(NB.Wine, newdata = test)
+
+## Question #12
+cm <- confusionMatrix(predicted_classes, test$y)
+print(cm)
 
 
 
