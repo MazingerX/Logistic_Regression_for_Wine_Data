@@ -1,0 +1,13 @@
+---
+title: "Project 2"
+author: "Luis Hinostroza"
+#date: "Sept 27, 2023"
+output: 
+  pdf_document:
+    keep_tex: yes  
+header-includes:
+  - \usepackage{color}  
+urlcolor: blue  
+---
+
+$\hat{P}(Y=1|\boldsymbol {x})=0.5$ = 0.5

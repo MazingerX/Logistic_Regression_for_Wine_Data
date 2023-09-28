@@ -2,7 +2,10 @@ library(ggplot2)
 library(GGally)
 library(caret)
 library(MASS)
+<<<<<<< HEAD
 library(e1071)
+=======
+>>>>>>> c7244f5c5fc91c268a96a9de548badd182fe35fd
 
 wine = read.table(file = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data",  
                   sep = ",", head=F)
@@ -64,6 +67,7 @@ ggplot(train, aes(x=x1, y=x2, color=y)) +
               intercept=-LDA.Wine$means[1,] %*% LDA.Wine$scaling/LDA.Wine$scaling[1], 
               color="black") +
   labs(title="LDA Decision Boundary")
+<<<<<<< HEAD
 
 ## Question #8
 predictions <- predict(LDA.Wine, newdata=train)
@@ -87,6 +91,13 @@ predicted_classes <- predict(NB.Wine, newdata = test)
 cm <- confusionMatrix(predicted_classes, test$y)
 print(cm)
 
+## Question #13
+eval=TRUE
+KNN.Wine <- predict(knn3(x=train[,c("x1","x2")],y=train$y,k=3), newdata=test[,c("x1","x2")], type="class")
+
+## Question #14
+cm <- confusionMatrix(KNN.Wine, test$y)
+print(cm)
 
 
 
